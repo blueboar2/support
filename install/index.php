@@ -96,6 +96,7 @@ Class support extends CModule
 
 	function InstallIBlocks()
 	{
+		global $USER;
 		// Создаем новый тип инфоблока SUPPORT
 		$arFieldsForType = Array(
 		    'ID' => "support",
@@ -411,6 +412,149 @@ Class support extends CModule
 
 		$this->AddProp($arFieldsProp);
 
+
+		// Устанавливаем ДЕМО-ДАННЫЕ
+		
+		// Авторы для примера
+		
+		$el = new CIBlockElement;
+		$PROP = array();
+		$PROP['name'] = "Иванов Иван Иванович";
+		$PROP['email'] = "ivanovii@rambler.ru";
+		
+		$arLoadProductArray = Array(
+		    "MODIFIED_BY" => $USER->GetID(),
+		    "CODE" => "code1",
+		    "IBLOCK_ID" => $iblockID1,
+		    "PROPERTY_VALUES" => $PROP,
+		    "NAME" => "Иванов Иван Иванович",
+		    "ACTIVE" => "Y",
+		);
+		
+		$au1 = $el->Add($arLoadProductArray);
+
+		$el = new CIBlockElement;
+		$PROP = array();
+		$PROP['name'] = "Петров Петр Петрович";
+		$PROP['email'] = "petrovpp@mail.ru";
+		
+		$arLoadProductArray = Array(
+		    "MODIFIED_BY" => $USER->GetID(),
+		    "CODE" => "code2",
+		    "IBLOCK_ID" => $iblockID1,
+		    "PROPERTY_VALUES" => $PROP,
+		    "NAME" => "Петров Петр Петрович",
+		    "ACTIVE" => "Y",
+		);
+		
+		$au2 = $el->Add($arLoadProductArray);
+
+		$el = new CIBlockElement;
+		$PROP = array();
+		$PROP['name'] = "Сидоров Сидор Сидорович";
+		$PROP['email'] = "sidorss@yandex.ru";
+		
+		$arLoadProductArray = Array(
+		    "MODIFIED_BY" => $USER->GetID(),
+		    "CODE" => "code3",
+		    "IBLOCK_ID" => $iblockID1,
+		    "PROPERTY_VALUES" => $PROP,
+		    "NAME" => "Сидоров Сидор Сидорович",
+		    "ACTIVE" => "Y",
+		);
+		
+		$au3 = $el->Add($arLoadProductArray);
+
+		// Вопросы для примера
+
+		$property_enums = CIBlockPropertyEnum::GetList(
+		              Array("DEF" => "DESC", "SORT" => "ASC"),
+		              Array("IBLOCK_ID"=>$iblockID4, "CODE"=>"actques"));
+		$enum_fields = $property_enums->GetNext();
+		$actques_y = $enum_fields["ID"];
+
+		$property_enums = CIBlockPropertyEnum::GetList(
+		              Array("DEF" => "DESC", "SORT" => "ASC"),
+		              Array("IBLOCK_ID"=>$iblockID4, "CODE"=>"endques"));
+		$enum_fields = $property_enums->GetNext();
+		$endques_y = $enum_fields["ID"];
+
+
+		$el = new CIBlockElement;
+		$PROP = array();
+		$PROP['authorques'] = $au1;
+		$PROP['incques'] = "Вопрос от Иванова";
+		$PROP['dateques'] = "20.06.2018 16:20:00";
+		$PROP['actques'] = Array("VALUE" => $actques_y);
+		$PROP['endques'] = false;
+		
+		$arLoadProductArray = Array(
+		    "MODIFIED_BY" => $USER->GetID(),
+		    "CODE" => "code4",
+		    "IBLOCK_ID" => $iblockID4,
+		    "PROPERTY_VALUES" => $PROP,
+		    "NAME" => "Вопрос от Иванова",
+		    "ACTIVE" => "Y",
+		);
+		
+		$que1 = $el->Add($arLoadProductArray);
+
+		$el = new CIBlockElement;
+		$PROP = array();
+		$PROP['authorques'] = $au1;
+		$PROP['incques'] = "Вопрос от Иванова к которому нельзя добавлять ответы";
+		$PROP['dateques'] = "20.06.2018 16:20:00";
+		$PROP['actques'] = Array("VALUE" => $actques_y);
+		$PROP['endques'] = Array("VALUE" => $endques_y);
+		
+		$arLoadProductArray = Array(
+		    "MODIFIED_BY" => $USER->GetID(),
+		    "CODE" => "code5",
+		    "IBLOCK_ID" => $iblockID4,
+		    "PROPERTY_VALUES" => $PROP,
+		    "NAME" => "Вопрос от Иванова к которому нельзя добавлять ответы",
+		    "ACTIVE" => "Y",
+		);
+		
+		$que2 = $el->Add($arLoadProductArray);
+		
+		$el = new CIBlockElement;
+		$PROP = array();
+		$PROP['authorques'] = $au2;
+		$PROP['incques'] = "Вопрос от Петрова";
+		$PROP['dateques'] = "18.06.2018 16:20:00";
+		$PROP['actques'] = Array("VALUE" => $actques_y);
+		$PROP['endques'] = false;
+		
+		$arLoadProductArray = Array(
+		    "MODIFIED_BY" => $USER->GetID(),
+		    "CODE" => "code6",
+		    "IBLOCK_ID" => $iblockID4,
+		    "PROPERTY_VALUES" => $PROP,
+		    "NAME" => "Вопрос от Петрова",
+		    "ACTIVE" => "Y",
+		);
+		
+		$que3 = $el->Add($arLoadProductArray);
+
+		$el = new CIBlockElement;
+		$PROP = array();
+		$PROP['authorques'] = $au3;
+		$PROP['incques'] = "Вопрос от Сидорова";
+		$PROP['dateques'] = "10.06.2018 16:20:00";
+		$PROP['actques'] = Array("VALUE" => $actques_y);
+		$PROP['endques'] = false;
+		
+		$arLoadProductArray = Array(
+		    "MODIFIED_BY" => $USER->GetID(),
+		    "CODE" => "code7",
+		    "IBLOCK_ID" => $iblockID4,
+		    "PROPERTY_VALUES" => $PROP,
+		    "NAME" => "Вопрос от Сидорова",
+		    "ACTIVE" => "Y",
+		);
+		
+		$que4 = $el->Add($arLoadProductArray);
 		
 		}
 		else
