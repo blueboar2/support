@@ -1,0 +1,29 @@
+<?
+$MESS['SUPPORT_MODULE_NAME'] = "Модуль техподдержки";
+$MESS['SUPPORT_MODULE_DESC'] = "Модуль техподдержки, позволяет задавать вопросы и получать ответы.";
+$MESS['SUPPORT_INSTALL_TITLE'] = "Установка модуля техподдержки";
+$MESS['SUPPORT_UNINSTALL_TITLE'] = "Удаление модуля техподдержки";
+$MESS['SUPPORT_IBLOCK_TYPE_NAME'] = "Инфоблоки для модуля техподдержки";
+$MESS['SUPPORT_IBLOCK_DELETE_ERROR'] = "Не удалось удалить инфоблоки для модуля техподдержки";
+$MESS['SUPPORT_IBLOCK_TYPE_NOT_INSTALLED'] = "Не удалось установить новый тип инфоблока для модуля техподдержки";
+$MESS['SUPPORT_IBLOCK_NOT_INSTALLED'] = "Не удалось установить новый инфоблок для модуля техподдержки";
+$MESS['SUPPORT_IBLOCK_NAME1'] = "Авторы";
+$MESS['SUPPORT_IBLOCK_NAME2'] = "Комментарии";
+$MESS['SUPPORT_IBLOCK_NAME3'] = "Ответы";
+$MESS['SUPPORT_IBLOCK_NAME4'] = "Вопросы";
+$MESS['SUPPORT_IBLOCK_PROP_NAME'] = "Имя";
+$MESS['SUPPORT_IBLOCK_PROP_EMAIL'] = "Адрес электронной почты";
+$MESS['SUPPORT_IBLOCK_PROP_AUTHORCOM'] = "Автор комментария";
+$MESS['SUPPORT_IBLOCK_PROP_ANSWER'] = "К какому ответу относится комментарий";
+$MESS['SUPPORT_IBLOCK_PROP_INCCOM'] = "Содержание комментария";
+$MESS['SUPPORT_IBLOCK_PROP_DATECOM'] = "Дата комментария";
+$MESS['SUPPORT_IBLOCK_PROP_AUTHORANS'] = "Автор ответа";
+$MESS['SUPPORT_IBLOCK_PROP_QUESTION'] = "К какому вопросу относится ответ";
+$MESS['SUPPORT_IBLOCK_PROP_INCANS'] = "Содержание ответа";
+$MESS['SUPPORT_IBLOCK_PROP_DATEANS'] = "Дата ответа";
+$MESS['SUPPORT_IBLOCK_PROP_AUTHORQUES'] = "Автор вопроса";
+$MESS['SUPPORT_IBLOCK_PROP_INCQUES'] = "Содежание вопроса";
+$MESS['SUPPORT_IBLOCK_PROP_DATEQUES'] = "Дата вопроса";
+$MESS['SUPPORT_IBLOCK_PROP_ACTQUES'] = "Активен ли вопрос";
+$MESS['SUPPORT_IBLOCK_PROP_ENDQUES'] = "Завершен ли вопрос";
+?>
