@@ -1,0 +1,41 @@
+.sup2_question, .sup2_answer {
+font-weight: bold;
+padding-bottom: 7px;
+}
+
+.sup2_author {
+padding-top: 15px;
+}
+
+.sup2_comment, .sup2_date
+{
+padding-bottom: 7px;
+}
+
+.sup2_commenttext {
+text-align: justify;
+font-weight: bold;
+padding-bottom: 10px;
+}
+
+.sup2_wordans {
+font-weight: bold;
+font-size: 15pt;
+}
+
+.sup2_dateans {
+padding-bottom: 10px;
+}
+
+.sup2_but {
+margin-bottom: 5px;
+box-shadow: 2px 3px;
+}
+
+.sup2_dnone {
+background-color: #EEEEEE;
+padding-left: 30px;
+padding-right: 30px;
+padding-top: 10px;
+padding-bottom: 10px;
+}
