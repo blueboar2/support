@@ -49,6 +49,7 @@ $ob = $res->GetNextElement()->GetFields();
 
 // Заносим все данные о выбранном вопросе
 $arResult = Array();
+$arResult["id"] = $ob["ID"];
 $arResult["endques"] = $ob["PROPERTY_ENDQUES_VALUE"];
 $arResult["actques"] = $ob["PROPERTY_ACTQUES_VALUE"];
 $arResult["incques"] = $ob["PROPERTY_INCQUES_VALUE"];
@@ -78,6 +79,7 @@ while ($ob = $res->GetNextElement())
     $ansid = $arFields["ID"];
     $ans['incans'] = $arFields["PROPERTY_INCANS_VALUE"];
     $ans['dateans'] = $arFields["PROPERTY_DATEANS_VALUE"];
+    $ans['id'] = $arFields["ID"];
     
     $ans['md5'] = md5($ansid);
     
