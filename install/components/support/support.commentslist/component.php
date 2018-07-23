@@ -64,6 +64,7 @@ $ouranswerid = $arParams["IBLOCK_ANSWER"];
 
 $arResult["comments"] = $comments;
 $arResult["ans"] = $ouranswerid;
+$arResult["md5"] = md5($ouranswerid);
 
 global $APPLICATION;
 $APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.commentslist/css/template.css");
