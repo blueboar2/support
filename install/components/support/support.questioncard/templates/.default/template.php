@@ -17,19 +17,22 @@
     <?php
         foreach ($arResult['answers'] as $answer)
         {
-    ?>
-        <div class="sup2_author"><?php echo($answer['authorans']); ?></div>
-        <div class="sup2_answer"><?php echo($answer['incans']); ?></div>
-        <div class="sup2_dateans"><?php echo($answer['dateans']); ?></div>
+
+	$APPLICATION->IncludeComponent(
+	"support:support.answercard",
+	"",
+	Array(
+	    "IBLOCK_ANSWER" => $answer['id'],
+	    "IBLOCK_QUESTION" => $arResult['id']
+	)
+	)
+?>    
 
         <button class="sup2_but" onclick='dge = document.getElementById("<?php echo $answer['md5']; ?>"); dge.style.display = (dge.style.display == "none") ? "block" : "none";'>Комментарии (<?php echo(count($answer['comments'])); ?>)</button>
         
         <div class="sup2_dnone" style="display: none;" id="<?php echo $answer['md5']; ?>">
         
     <?php
-    
-	echo "выводим ответ номер ".$answer['id']." для вопроса номер ".$arResult['id'];
-
 	$APPLICATION->IncludeComponent(
 	"support:support.commentslist",
 	"",
@@ -40,6 +43,7 @@
 	)
     ?>
 
+	</div>
     <?php
         }
     ?>

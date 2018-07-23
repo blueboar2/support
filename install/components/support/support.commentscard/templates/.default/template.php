@@ -8,7 +8,3 @@
             </TABLE>
             <div class="sup2_commenttext"><?php echo $arResult['inccom']; ?></div>
             
-            Добавить сюда форму добавления комментария<BR>
-            <p>
-            </div>
-
