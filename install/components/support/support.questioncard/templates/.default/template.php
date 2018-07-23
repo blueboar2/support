@@ -27,12 +27,15 @@
         <div class="sup2_dnone" style="display: none;" id="<?php echo $answer['md5']; ?>">
         
     <?php
+    
+	echo "выводим ответ номер ".$answer['id']." для вопроса номер ".$arResult['id'];
+
 	$APPLICATION->IncludeComponent(
 	"support:support.commentslist",
 	"",
 	Array(
-	    "IBLOCK_ANSWER" => $answer['ID'],
-	    "IBLOCK_QUESTION" => $arResult['ID']
+	    "IBLOCK_ANSWER" => $answer['id'],
+	    "IBLOCK_QUESTION" => $arResult['id']
 	)
 	)
     ?>

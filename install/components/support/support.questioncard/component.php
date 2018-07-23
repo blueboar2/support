@@ -41,7 +41,7 @@ $comment_id = $ar_res['ID'];
 
 $ourquestionid = $arParams["IBLOCK_QUESTION"];
 
-$arSelect = Array("property_endques", "property_actques", "property_incques", "property_dateques", "property_authorques");
+$arSelect = Array("ID", "property_endques", "property_actques", "property_incques", "property_dateques", "property_authorques");
 $arFilter = Array("ID" => $ourquestionid, "IBLOCK_ID" => $question_id);
 $res = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
 
@@ -49,6 +49,7 @@ $ob = $res->GetNextElement()->GetFields();
 
 // Заносим все данные о выбранном вопросе
 $arResult = Array();
+
 $arResult["id"] = $ob["ID"];
 $arResult["endques"] = $ob["PROPERTY_ENDQUES_VALUE"];
 $arResult["actques"] = $ob["PROPERTY_ACTQUES_VALUE"];

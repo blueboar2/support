@@ -8,14 +8,6 @@ if(!CModule::IncludeModule("iblock"))
 
 $res = CIBlock::GetList(
 	Array(),
-	Array('CODE' => 'answers'),
-	true);
-	
-$ar_res = $res->Fetch();
-$answer_id = $ar_res['ID'];
-
-$res = CIBlock::GetList(
-	Array(),
 	Array('CODE' => 'authors'),
 	true);
 	
@@ -30,24 +22,17 @@ $res = CIBlock::GetList(
 $ar_res = $res->Fetch();
 $comment_id = $ar_res['ID'];
 
-$ouranswerid = $arParams["IBLOCK_ANSWER"];
 
-    // Сюда будем заносить данные о комментариях к ответу
-    $comments = Array();
-
-        $arSelect = Array("ID", "property_inccom", "property_datecom", "property_authorcom");
-        $arFilter = Array("property_answer.ID" => $ouranswerid, "IBLOCK_ID" => $comment_id);
+        $arSelect = Array("property_inccom", "property_datecom", "property_authorcom");
+        $arFilter = Array("ID" => $arParams['IBLOCK_COMMENT'], "IBLOCK_ID" => $comment_id);
         $arSort = Array("property_datecom" => "DESC");
         $yres = CIBlockElement::GetList($arSort, $arFilter, false, false, $arSelect);
 
         while ($yob = $yres->GetNextElement())
         {
-            $coms = Array();
-
             $arFields = $yob->GetFields();
-            $coms['id'] = $arFields["ID"];
-            $coms['inccom'] = $arFields["PROPERTY_INCCOM_VALUE"];
-            $coms['datecom'] = $arFields["PROPERTY_DATECOM_VALUE"];
+            $arResult['inccom'] = $arFields["PROPERTY_INCCOM_VALUE"];
+            $arResult['datecom'] = $arFields["PROPERTY_DATECOM_VALUE"];
     
             $cid = $arFields["PROPERTY_AUTHORCOM_VALUE"];
     
@@ -56,17 +41,11 @@ $ouranswerid = $arParams["IBLOCK_ANSWER"];
             $resy = CIBlockElement::GetList(Array(), $arFilter, false, false, $arSelect);
     
             $rresy = $resy->GetNextElement()->GetFields();
-            $coms['authorcom'] = $rresy["PROPERTY_NAME_VALUE"];
-            
-            // Заносим следующий комментарий
-            array_push($comments, $coms);
-        }
-
-$arResult["comments"] = $comments;
-$arResult["ans"] = $ouranswerid;
+            $arResult['authorcom'] = $rresy["PROPERTY_NAME_VALUE"];
+	}
 
 global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.commentslist/css/template.css");
+$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.commentscard/css/template.css");
 
 $this->IncludeComponentTemplate();
 ?>
