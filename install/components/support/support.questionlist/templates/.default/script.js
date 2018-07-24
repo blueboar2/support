@@ -2,6 +2,10 @@ window.addEventListener('new_question', function(e) {
     jsAjaxUtil.PostData('/bitrix/components/support/support.questionlist/ajax.php', "", xPutData);
 });
 
+window.addEventListener('new_answer', function(e) {
+    jsAjaxUtil.PostData('/bitrix/components/support/support.questionlist/ajax.php', "", xPutData);
+});
+
 function xPutData(data)
 {
 dge = document.getElementsByClassName('sup_questionlist');
