@@ -1,20 +1,24 @@
-function ajax_new_question(e)
+function ajax_new_question(hash)
 {
 var tosend = new Array();
-tosend['name'] = document.getElementById('name').value;
-tosend['email'] = document.getElementById('email').value;
-tosend['tarea'] = document.getElementById('tarea').value;
+tosend['name'] = document.getElementById('name_'+hash).value;
+tosend['email'] = document.getElementById('email_'+hash).value;
+tosend['tarea'] = document.getElementById('tarea_'+hash).value;
+tosend['hash'] = hash;
 jsAjaxUtil.PostData('/bitrix/components/support/support.questionadd/ajax.php', tosend, PutData);
 }
 
 function PutData(data)
 {
-dge = document.getElementById('status');
 
+
+sdata = data.split(':');
+
+dge = document.getElementById('status_'+sdata[1]);
 dge.style.display = "block";
 dge.style.width = "60%";
 
-if (data == "OK")
+if (sdata[0] == "OK")
     {
     dge.innerHTML = "Ваш вопрос был добавлен, спасибо!";
     dge.style.background = "lightgreen";
@@ -29,10 +33,10 @@ if (data == "OK")
     dge.style.background = "red";
     }
 
-setTimeout(return_to_none, 5000);
+setTimeout(return_to_none.bind(null, sdata[1]), 5000);
 }
 
-function return_to_none()
+function return_to_none(hash)
 {
-document.getElementById('status').style.display = "none";
+document.getElementById('status_'+hash).style.display = "none";
 }

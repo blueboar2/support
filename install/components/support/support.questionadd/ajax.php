@@ -36,11 +36,12 @@ $property_enums = CIBlockPropertyEnum::GetList(
 $enum_fields = $property_enums->GetNext();
 $endques_y = $enum_fields["ID"];
 
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']))
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']) && isset($_POST['hash']))
     {
     $sname = htmlspecialchars(unicode_decode($_POST['name']));
     $semail = htmlspecialchars(unicode_decode($_POST['email']));
     $starea = htmlspecialchars(unicode_decode($_POST['tarea']));
+    $shash = htmlspecialchars(unicode_decode($_POST['hash']));
     
     $arSelect = Array("name", "email");
     $arFilter = Array("property_name" => $sname, "property_email" => $semail, "IBLOCK_ID" => $author_id);
@@ -102,10 +103,10 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']))
 	
 	$questionid = $el->Add($arLoadProductArray);
 	
-	echo "OK";
+	echo "OK:".$shash;
     }
     else
     {
-    echo "ERROR";
+    echo "ERROR:".$shash;
     }
 ?>
