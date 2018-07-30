@@ -82,7 +82,7 @@ while ($ob = $res->GetNextElement())
     $ans['dateans'] = $arFields["PROPERTY_DATEANS_VALUE"];
     $ans['id'] = $arFields["ID"];
     
-    $ans['md5'] = md5($ansid);
+    $ans['md5'] = md5($ansid.rand());
     
     $cid = $arFields["PROPERTY_AUTHORANS_VALUE"];
     
@@ -98,9 +98,6 @@ while ($ob = $res->GetNextElement())
 }
 
 $arResult["answers"] = $answers;
-
-global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.questioncard/css/template.css");
 
 $this->IncludeComponentTemplate();
 ?>

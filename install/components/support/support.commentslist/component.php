@@ -31,6 +31,8 @@ $ar_res = $res->Fetch();
 $comment_id = $ar_res['ID'];
 
 $ouranswerid = $arParams["IBLOCK_ANSWER"];
+$ourquestionid = $arParams["IBLOCK_QUESTION"];
+$exp = $arParams["EXPAND"];
 
     // Сюда будем заносить данные о комментариях к ответу
     $comments = Array();
@@ -62,12 +64,12 @@ $ouranswerid = $arParams["IBLOCK_ANSWER"];
             array_push($comments, $coms);
         }
 
+
 $arResult["comments"] = $comments;
 $arResult["ans"] = $ouranswerid;
-$arResult["md5"] = md5($ouranswerid);
-
-global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.commentslist/css/template.css");
+$arResult["ourquestion"] = $ourquestionid;
+$arResult["exp"] = $exp;
+$arResult["md5"] = md5($ouranswerid.rand());
 
 $this->IncludeComponentTemplate();
 ?>

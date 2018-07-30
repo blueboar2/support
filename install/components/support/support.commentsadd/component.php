@@ -50,6 +50,7 @@ else
     };
 
 $arResult['ourquestion'] = $arParams['IBLOCK_QUESTION'];
+$arResult['ouranswer'] = $arParams['IBLOCK_ANSWER'];
     
 CAjax::Init();
 $this->IncludeComponentTemplate();

@@ -37,9 +37,6 @@ $res = CIBlock::GetList(
 	true);
 	
 
-global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.questionadd/css/template.css");
-
 global $USER;
 if ($USER->IsAuthorized())
     {

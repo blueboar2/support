@@ -70,8 +70,5 @@ while ($ob = $res->GetNextElement())
     $arResult['authorans'] = $rresx["PROPERTY_NAME_VALUE"];
 }
 
-global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.answercard/css/template.css");
-
 $this->IncludeComponentTemplate();
 ?>

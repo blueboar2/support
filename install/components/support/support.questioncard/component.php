@@ -129,8 +129,5 @@ while ($ob = $res->GetNextElement())
 
 $arResult["answers"] = $answers;
 
-global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.questioncard/css/template.css");
-
 $this->IncludeComponentTemplate();
 ?>

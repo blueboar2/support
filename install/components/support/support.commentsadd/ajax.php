@@ -31,6 +31,13 @@ $res = CIBlock::GetList(
 $ar_res = $res->Fetch();
 $answer_id = $ar_res['ID'];
 
+$res = CIBlock::GetList(
+    Array(),
+    Array('CODE' => 'comments'),
+    true);
+$ar_res = $res->Fetch();
+$comment_id = $ar_res['ID'];
+
 $property_enums = CIBlockPropertyEnum::GetList(
     Array("DEF" => "DESC", "SORT" => "ASC"),
     Array("IBLOCK_ID" => $question_id, "CODE"=>"actques"));
@@ -43,14 +50,13 @@ $property_enums = CIBlockPropertyEnum::GetList(
 $enum_fields = $property_enums->GetNext();
 $endques_y = $enum_fields["ID"];
 
-print_r($POST);
-
-if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']) && isset($_POST['hash']) && isset($_POST['qu']))
+if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']) && isset($_POST['hash']) && isset($_POST['an']) && isset($_POST['qu']))
     {
     $sname = htmlspecialchars(unicode_decode($_POST['name']));
     $semail = htmlspecialchars(unicode_decode($_POST['email']));
     $starea = htmlspecialchars(unicode_decode($_POST['tarea']));
     $shash = htmlspecialchars(unicode_decode($_POST['hash']));
+    $san = htmlspecialchars(unicode_decode($_POST['an']));
     $squ = htmlspecialchars(unicode_decode($_POST['qu']));
     
     $arSelect = Array("name", "email");
@@ -93,7 +99,7 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']) &&
         	}
 	}
 
-	// Проверяем, а можно ли отвечать на данный вопрос
+	// Проверяем, а можно ли комментировать данный вопрос
 	
         $arSelect = Array("actques", "endques");
         $arFilter = Array("ID" => (int) $squ, "IBLOCK_ID" => $question_id);
@@ -108,22 +114,22 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']) &&
 	
 	if ($aques!='Y' || $eques=='Y')
 	{
-	echo "ERROR:".$shash.":".$squ;
+	echo "ERROR:".$shash.":".$san."#".$squ;
 	}
 	else
 	{
-	// Заносим в базу новый ответ
+	// Заносим в базу новый комментарий
 	$el = new CIBlockElement;
 	$PROP = array();
-	$PROP['authorans'] = $authorid;
-	$PROP['question'] = (int) $squ;	
-	$PROP['incans'] = $starea;
-	$PROP['dateans'] = date("d.m.Y H:i:s");
+	$PROP['authorcom'] = $authorid;
+	$PROP['answer'] = (int) $san;	
+	$PROP['inccom'] = $starea;
+	$PROP['datecom'] = date("d.m.Y H:i:s");
 	
 	$arLoadProductArray = Array(
 	    "MODIFIED_BY" => $USER->GetID(),
 	    "CODE" => substr(md5(rand()), 0, 10),
-	    "IBLOCK_ID" => $answer_id,
+	    "IBLOCK_ID" => $comment_id,
 	    "PROPERTY_VALUES" => $PROP,
 	    "NAME" => $sname." ".$semail,
 	    "ACTIVE" => "Y",
@@ -131,11 +137,11 @@ if (isset($_POST['name']) && isset($_POST['email']) && isset($_POST['tarea']) &&
 	
 	$answerid = $el->Add($arLoadProductArray);
 	
-	echo "OK:".$shash.":".$squ;
+	echo "OK:".$shash.":".$san."#".$squ;
 	}
     }
     else
     {
-    echo "ERROR:".$shash.":".$squ;
+    echo "ERROR:".$shash.":".$san."#".$squ;
     }
 ?>

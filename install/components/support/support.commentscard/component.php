@@ -44,8 +44,5 @@ $comment_id = $ar_res['ID'];
             $arResult['authorcom'] = $rresy["PROPERTY_NAME_VALUE"];
 	}
 
-global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.commentscard/css/template.css");
-
 $this->IncludeComponentTemplate();
 ?>

@@ -42,9 +42,6 @@ while ($ob = $res->GetNextElement())
         $xval[$xarFields["ID"]] = "[".$xarFields["ID"]."] ".$xarFields["PROPERTY_INCANS_VALUE"];
     }
 
-$zval[1] = GetMessage("SUPPORT_EXPAND1");
-$zval[0] = GetMessage("SUPPORT_EXPAND2");
-
 $arComponentParameters = array(
     "GROUPS" => array(
 	"BASE" => array(
@@ -64,15 +61,6 @@ $arComponentParameters = array(
 	    "NAME" => GetMessage("SELECT_AN_ANSWER"),
 	    "TYPE" => "LIST",
 	    "VALUES" => $xval,
-	),
-
-	"EXPAND" => array(
-	    "PARENT" => "BASE",
-	    "NAME" => GetMessage("SUPPORT_EXPAND"),
-	    "TYPE" => "LIST",
-	    "VALUES" => $zval,
-	),
-	
-	
+	)
     )
 );

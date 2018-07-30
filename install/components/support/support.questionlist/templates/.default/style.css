@@ -1,0 +1,23 @@
+.sup_questionlist {
+padding: 10px;
+}
+
+.sup_question, .sup_answer {
+font-weight: bold;
+padding-bottom: 7px;
+}
+
+.sup_conc_ques {
+float: left;
+padding-bottom: 20px;
+}
+
+.sup_conc_ans {
+float: right;
+width: 10%;
+text-align: center;
+}
+
+.sup_clear {
+clear: both;
+}

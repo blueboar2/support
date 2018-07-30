@@ -49,8 +49,5 @@ while ($ob = $res->GetNextElement())
     
 }
 
-global $APPLICATION;
-$APPLICATION->SetAdditionalCSS("/bitrix/components/support/support.questionlist/css/template.css");
-
 $this->IncludeComponentTemplate();
 ?>

@@ -25,7 +25,8 @@
 	"",
 	Array(
 	    "IBLOCK_ANSWER" => $answer['id'],
-	    "IBLOCK_QUESTION" => $arResult['id']
+	    "IBLOCK_QUESTION" => $arResult['id'],
+	    "EXPAND" => 0
 	)
 	);
 
